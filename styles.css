@@ -3,8 +3,71 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: monospace;
+    letter-spacing: 0.5px;
 }
 
 body {
     background-color: rgb(44, 50, 61);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    letter-spacing: 1px;
+}
+
+p {
+    font-weight: 600;
+    font-size: large;
+}
+
+input {
+    background-color: rgba(113, 131, 145, 0.468);
+    border: 2px solid rgb(98, 190, 244);
+    border-radius: 10px;
+    font-size: x-large;
+    outline: none;    
+    text-align: center;padding: 5px 10px;
+    color: white;
+    font-weight: 800;
+    width: 100%;
+}
+
+button {
+    background-color: rgba(113, 131, 145, 0.468);
+    border: 2px solid rgb(98, 190, 244);
+    border-radius: 10px;
+    font-size: x-large;
+    outline: none;    
+    text-align: center;padding: 5px 10px;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 250ms transform;
+}
+
+button:hover {
+    transform: scale(110%) rotateZ(-2deg);
+}
+
+section {
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 650px;
+}
+
+section div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
