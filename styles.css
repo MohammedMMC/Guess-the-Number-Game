@@ -1,0 +1,10 @@
+* {
+    color: rgb(98, 190, 244);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(44, 50, 61);
+}
