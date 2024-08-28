@@ -2,7 +2,7 @@ const guessedNumberInput = document.getElementById("guessedNumber");
 const messageElement = document.getElementById("message");
 const winMessageElement = document.getElementById("win_message");
 
-const THE_NUMBER = Math.random() * 100;
+const THE_NUMBER = Math.floor(Math.random() * 100);
 let tries = 0;
 
 // Arrays of responses
@@ -37,17 +37,21 @@ function getRandomResponse(responseCategory) {
 
 
 function tryGuess() {
+    if (winMessageElement.style.display == 'block') return;
     const num = Number(guessedNumberInput.value);
     if (isNaN(num) || num > 100 || num < 0) return displayMessage("Your number must be between 0 and 100!", 1);
     tries++;
-    if (THE_NUMBER - num > 50) return displayMessage(getRandomResponse(tooFarResponses), 1);
-    if (THE_NUMBER - num <= 50 && THE_NUMBER - num > 20) return displayMessage(getRandomResponse(farResponses), 2);
-    if (THE_NUMBER - num <= 20 && THE_NUMBER - num > 3) return displayMessage(getRandomResponse(closeResponses), 3);
-    if (THE_NUMBER - num <= 3) return displayMessage(getRandomResponse(tooCloseResponses), 4);
-    if(THE_NUMBER - num === 0) {
+    console.log(num, THE_NUMBER);
+    const diff = Math.abs(THE_NUMBER - num)
+
+    if (diff > 50) return displayMessage(getRandomResponse(tooFarResponses), 1);
+    if (diff <= 50 && diff > 20) return displayMessage(getRandomResponse(farResponses), 2);
+    if (diff <= 20 && diff > 3) return displayMessage(getRandomResponse(closeResponses), 3);
+    if (diff <= 3 && diff > 0) return displayMessage(getRandomResponse(tooCloseResponses), 4);
+    if (diff === 0) {
         displayMessage("YOU GOT IT!", 4);
-        winMessageElement.style.display = 'none';
-        // winMessageElement.innerHTML
+        winMessageElement.style.display = 'block';
+        winMessageElement.innerHTML = `The Number: <span>${THE_NUMBER}</span><br>Tries: <span>${tries}</span>`;
     }
 
 }
